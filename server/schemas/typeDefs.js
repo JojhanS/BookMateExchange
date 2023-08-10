@@ -22,6 +22,18 @@ const typeDefs = gql`
     password: string
     orders: [Order]
   }
+
+  type Query {
+    profiles: [Profile]!
+    profile(profileId: ID!): Profile
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+
+    removeUser(userId: ID!): User
+  }
 `;
 
 module.exports = typeDefs;
