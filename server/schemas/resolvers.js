@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const User = require('../models/index')
+const User = require('../models/index');
 const bcrypt = require("bcrypt");
 const { signToken } = require("../utils/auth");
 
@@ -29,7 +29,7 @@ const resolvers = {
     },
     
     login: async (parent, { email, password }) => {
-      const user = await user.findOne({ email });
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect email and/or password!');

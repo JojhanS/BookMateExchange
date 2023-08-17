@@ -11,7 +11,7 @@ const typeDefs = gql`
   }
 
   type Order {
-    purchaseDate: Date
+    purchaseDate: String
     books: [Book]
   }
 
