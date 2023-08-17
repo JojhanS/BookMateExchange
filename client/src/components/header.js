@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Header = () => {
+function Header() {
     const [searchInput, setSearchInput] = useState('');
     return (
         <header>
@@ -8,23 +8,23 @@ const Header = () => {
             <div>
                 <form>
                     <input className="search-bar" type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-                    <Link to={`/search-results?search=${searchInput}`} className="custom-button" onClick={() => localStorage.setItem('searchInput', searchInput)} >
-                    </Link>
+                    {/* <Link to={`/search-results?search=${searchInput}`} className="custom-button" onClick={() => localStorage.setItem('searchInput', searchInput)} >
+                    </Link> */}
                 </form>
 
                 <div className="links">
-                    <Link to='/Profile' className='user-fav'>
+                    {/* <Link to='/Profile' className='user-fav'>
                         <div className="icon-container">
                             <span className="icon-caption">Profile</span>
                         </div>
-                    </Link>
-
+                    </Link> */}
+{/* 
                     <Link to='/saved' className='user-fav'>
                         <div className="icon-container">
                             <span className="icon-caption">Saved</span>
                         </div>
 
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </header>
