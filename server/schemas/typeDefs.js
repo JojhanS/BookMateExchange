@@ -16,8 +16,7 @@ const typeDefs = gql`
   }
 
   type User {
-    firstName: String
-    lastName: String
+    username: String
     email: String
     password: String
     orders: [Order]
