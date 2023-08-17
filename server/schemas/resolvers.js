@@ -15,8 +15,8 @@ const resolvers = {
     },
     Query: {
       books: async (_, { bookSearch }) => {
-        const books = await fetchData(bookSearch); // Fetch books using your fetchData function
-        return books.items; // Assuming the response contains an 'items' array of books
+        const books = await fetchData(bookSearch); 
+        return books.items;
       },
     },
   },
