@@ -15,9 +15,19 @@ const resolvers = {
         }
       },
       books: async (_, { bookSearch }) => {
-        const books = await fetchBooks(bookSearch); 
-        console.log(books)
-        return books.items;
+        const booksData = await fetchBooks(bookSearch);
+        console.log(booksData)
+
+        const books = booksData.items.map((book) => ({
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors || [], 
+          description: book.volumeInfo.description,
+          bookId: book.id,
+          image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : null,
+          link: book.volumeInfo.previewLink,
+        }));
+  
+        return books;
     },
   },
   Mutation: {
