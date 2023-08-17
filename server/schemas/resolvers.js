@@ -14,11 +14,9 @@ const resolvers = {
         throw new Error('Error fetching user profile');
       }
     },
-    Query: {
       books: async (_, { bookSearch }) => {
         const books = await fetchBooks(bookSearch); 
         return books.items;
-      },
     },
   },
   Mutation: {

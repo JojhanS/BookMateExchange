@@ -29,8 +29,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    // profiles: [Profile]!
-    // profile(profileId: ID!): Profile
+    profile(userId: ID!): User
     books(searchTerm: String!): [Book]
   }
 
