@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const User = require('../models/index');
 const bcrypt = require("bcrypt");
 const { signToken } = require("../utils/auth");
+const fetchBooks = require('../utils/api');
 
 const resolvers = {
   Query: {
@@ -15,7 +16,7 @@ const resolvers = {
     },
     Query: {
       books: async (_, { bookSearch }) => {
-        const books = await fetchData(bookSearch); 
+        const books = await fetchBooks(bookSearch); 
         return books.items;
       },
     },
@@ -51,7 +52,7 @@ const resolvers = {
       if (!correctPassword) {
         throw new AuthenticationError('Incorrect email and/or password!');
       }
-      
+
       const token = signToken(user);
       return { token, user };
     },
