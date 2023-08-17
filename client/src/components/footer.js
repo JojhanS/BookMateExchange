@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
     return(
         <header>
-            <h3>Footer</h3>
+            <h3>Thank you for visiting BookMate Exchange</h3>
         </header>
     );
 }
