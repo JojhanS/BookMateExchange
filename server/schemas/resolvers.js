@@ -1,19 +1,19 @@
 const { AuthenticationError } = require('apollo-server-express');
-const User = require('../models/index');
+const User = require('../models/User');
 const bcrypt = require("bcrypt");
 const { signToken } = require("../utils/auth");
 const fetchBooks = require('../utils/api');
 
 const resolvers = {
   Query: {
-    profile: async (_, { userId }) => {
-      try {
-        const user = await User.findById(userId); // Assuming you're using Mongoose
-        return user; // Return the user profile
-      } catch (error) {
-        throw new Error('Error fetching user profile');
-      }
-    },
+      profile: async (_, { userId }) => {
+        try {
+          const user = await User.findById(userId);
+          return user;
+        } catch (error) {
+          throw new Error('Error fetching user profile');
+        }
+      },
       books: async (_, { bookSearch }) => {
         const books = await fetchBooks(bookSearch); 
         console.log(books)

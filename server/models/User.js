@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Order = require('./Order');
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -41,6 +41,10 @@ userSchema.pre('save', async function(next) {
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
+};
+
+userSchema.statics.findByEmail = async function (email) {
+  return this.findOne({ email });
 };
 
 const User = mongoose.model('User', userSchema);
