@@ -56,6 +56,25 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addBookToOrder: async (_, { bookId }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError('You must be logged in to perform this action');
+      }
+      const bookData = await fetchBooks(bookId);
+
+      if (!bookData || !bookData.volumeInfo) {
+        throw new Error('Book not found');
+      }
+
+      // Create or update the user's order
+      let order = await Order.findOneAndUpdate(
+        { user: user._id },
+        { $push: { books: bookToAdd } },
+        { new: true, upsert: true }
+      );
+
+      return order;
+    },
   },
 };
 
