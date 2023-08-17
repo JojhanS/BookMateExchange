@@ -16,6 +16,7 @@ const resolvers = {
     },
       books: async (_, { bookSearch }) => {
         const books = await fetchBooks(bookSearch); 
+        console.log(books)
         return books.items;
     },
   },
@@ -67,7 +68,7 @@ const resolvers = {
       // Create or update the user's order
       let order = await Order.findOneAndUpdate(
         { user: user._id },
-        { $push: { books: bookToAdd } },
+        { $push: { books: bookData.volumeInfo } },
         { new: true, upsert: true }
       );
 
