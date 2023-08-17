@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const API_KEY = "YOUR_API_KEY";
+const API_KEY = "AIzaSyBvugchZRkvRsDASJok9THPvCdwFUiNPGs";
 
 const fetchBooks = async (bookSearch) => {
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookSearch}&key=${API_KEY}`, {
