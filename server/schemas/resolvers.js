@@ -20,7 +20,7 @@ const resolvers = {
 
         const books = booksData.items.map((book) => ({
           title: book.volumeInfo.title,
-          authors: book.volumeInfo.authors || [], 
+          authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : '', 
           description: book.volumeInfo.description,
           bookId: book.id,
           image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : null,

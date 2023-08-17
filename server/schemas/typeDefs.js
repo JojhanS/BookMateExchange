@@ -29,7 +29,7 @@ const typeDefs = gql`
 
   type Query {
     profile(userId: ID!): User
-    books(searchTerm: String!): [Book]
+    books(bookSearch: String!): [Book]
   }
 
   type Mutation {
