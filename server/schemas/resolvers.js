@@ -46,12 +46,12 @@ const resolvers = {
         throw new AuthenticationError('Incorrect email and/or password!');
       }
 
-      const correctPw = await User.isCorrectPassword(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
+      if (!correctPassword) {
         throw new AuthenticationError('Incorrect email and/or password!');
       }
-
+      
       const token = signToken(user);
       return { token, user };
     },
