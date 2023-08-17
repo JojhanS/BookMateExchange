@@ -27,11 +27,16 @@ const resolvers = {
 
       return { token, user };
     },
-    removeUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-
-      return { token, user };
+    removeUser: async (_, { userId }) => {
+      try {
+        const removedUser = await User.findByIdAndRemove(userId);
+        if (!removedUser) {
+          throw new Error('User not found');
+        }
+        return removedUser;
+      } catch (error) {
+        throw new Error('Error removing user');
+      }
     },
     
     login: async (parent, { email, password }) => {
