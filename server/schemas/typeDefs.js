@@ -31,7 +31,7 @@ const typeDefs = gql`
   type Query {
     // profiles: [Profile]!
     // profile(profileId: ID!): Profile
-    books: [Book]
+    books(searchTerm: String!): [Book]
   }
 
   type Mutation {

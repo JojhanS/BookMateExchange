@@ -13,6 +13,12 @@ const resolvers = {
         throw new Error('Error fetching user profile');
       }
     },
+    Query: {
+      books: async (_, { bookSearch }) => {
+        const books = await fetchData(bookSearch); // Fetch books using your fetchData function
+        return books.items; // Assuming the response contains an 'items' array of books
+      },
+    },
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
